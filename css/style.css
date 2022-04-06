@@ -1,0 +1,351 @@
+/* ===========================================================================  imports             */
+
+@import url(../css/global.css);
+
+/* ===========================================================================  body                */
+
+body {
+    background: linear-gradient(to bottom, var(--color-gradient-1) 0%, var(--color-gradient-2) 100%);
+    overflow-x: hidden;
+}
+
+/* ===========================================================================  header              */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-black-1);
+    box-shadow: 0 0 2rem var(--color-black-1);
+    z-index: 100;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.header.hide-navbar {
+    transform: translateY(-8rem);
+}
+
+.header .nav {
+    height: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5% 0 5%;
+}
+
+.header .nav .logo {
+    font-size: 2.2rem;
+}
+
+.header .nav .logo a {
+    color: var(--color-white-1);
+    padding: 1rem;
+}
+
+.header .nav .nav-list {
+    position: fixed;
+    top: 8rem;
+    right: 0;
+    bottom: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--color-black-2);
+    overflow: hidden;
+    z-index: 90;
+}
+
+.header .nav .nav-list.active {
+    transition-property: bottom;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    bottom: 0;
+}
+
+.header .nav .nav-list::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background-color: var(--color-white-1);
+    opacity: 0;
+}
+
+.header .nav .nav-list.active::before {
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    opacity: 1;
+}
+
+.header .nav .nav-list li {
+    padding: 1rem 0 1rem 0;
+}
+
+.header .nav .nav-list li .nav-item {
+    color: var(--color-white-1);
+    font-size: 2rem;
+    padding: 1rem;
+    white-space: nowrap;
+    border: 2px solid transparent;
+    border-radius: 1rem;
+    transition-property: border;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.header .nav .nav-list li .nav-item.active-section {
+    border: 2px solid var(--color-red-1);
+}
+
+.header .nav .nav-list li .nav-item:hover {
+    color: var(--color-red-1);
+}
+
+.header .nav .burger {
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.header .nav .burger > div {
+    background-color: var(--color-white-1);
+    width: 3rem;
+    height: 0.3rem;
+    margin: 0.7rem 0 0.7rem 0;
+    transition-property: background-color, transform;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.header .nav .burger.active > div {
+    background-color: var(--color-red-1);
+}
+
+.header .nav .burger.active > div.line-1 {
+    transform: translateY(1rem);
+}
+
+.header .nav .burger.active > div.line-3 {
+    transform: translateY(-1rem);
+}
+
+/* ===========================================================================  main                */
+
+.main {
+    padding: 0 3% 0 3%;
+}
+
+.main .scroller {
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    color: var(--color-white-1);
+    font-size: 1.6rem;
+    background-color: var(--color-black-2);
+    transform: rotate(-90deg) scale(0);
+    z-index: 80;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.main .scroller.active {
+    transform: rotate(-90deg) scale(1);
+}
+
+.main .hero .section-grid {
+    min-height: 100vh;
+    padding: 16rem 5% 8rem 5%;
+    display: grid;
+    place-items: center;
+}
+
+.main .hero .section-grid h1 {
+    color: var(--color-white-1);
+    font-size: 7rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.main > section[data-nav] {
+    position: relative;
+    min-height: 90vh;
+    margin: 0 0 8rem 0;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-radius: 5rem;
+    text-align: justify;
+    backdrop-filter: blur(5px);
+    transition-property: background-color, border-top, border-left, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.main > section[data-nav]:last-of-type {
+    margin: 0;
+}
+
+.main > section[data-nav].active-section {
+    background-color: var(--color-white-2);
+    border-top: 2px solid var(--color-white-2);
+    border-left: 2px solid var(--color-white-2);
+    box-shadow: 0 0 1rem var(--color-black-1);
+}
+
+.main > section[data-nav]:nth-of-type(even) {
+    padding: 5rem 5% 5rem 5%;
+}
+
+.main > section[data-nav]:nth-of-type(even)::before {
+    content: "";
+    position: absolute;
+    top: -5vh;
+    left: -3vw;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-black-3) 0%, var(--color-black-4) 100%);
+    opacity: 0;
+    z-index: -10;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.main > section[data-nav]:nth-of-type(even)::after {
+    content: "";
+    position: absolute;
+    right: -3vw;
+    bottom: -4vh;
+    width: 40vh;
+    height: 40vh;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-black-3) 0%, var(--color-black-4) 100%);
+    opacity: 0;
+    z-index: -10;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.main > section[data-nav]:nth-of-type(even) .section-grid .title-box .title {
+    text-align: left;
+}
+
+.main > section[data-nav]:nth-of-type(odd) {
+    padding: 5rem 5% 5rem 5%;
+}
+
+.main > section[data-nav]:nth-of-type(odd)::before {
+    content: "";
+    position: absolute;
+    top: -5vh;
+    right: -3vw;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-black-3) 0%, var(--color-black-4) 100%);
+    opacity: 0;
+    z-index: -10;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.main > section[data-nav]:nth-of-type(odd)::after {
+    content: "";
+    position: absolute;
+    left: -3vw;
+    bottom: -4vh;
+    width: 40vh;
+    height: 40vh;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-black-3) 0%, var(--color-black-4) 100%);
+    opacity: 0;
+    z-index: -10;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.main > section[data-nav]:nth-of-type(odd) .section-grid .title-box .title {
+    text-align: right;
+}
+
+.main > section[data-nav].active-section:nth-of-type(even)::before,
+.main > section[data-nav].active-section:nth-of-type(even)::after,
+.main > section[data-nav].active-section:nth-of-type(odd)::before,
+.main > section[data-nav].active-section:nth-of-type(odd)::after {
+    opacity: 1;
+    animation-name: rotate;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-direction: reverse;
+}
+
+.main > section[data-nav] .section-grid {
+    max-width: 2560px;
+    margin: 0 auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    row-gap: 2.6rem;
+}
+
+.main > section[data-nav] .section-grid .title-box .title {
+    color: var(--color-white-1);
+    font-size: 4.6rem;
+    font-weight: bold;
+    border-bottom: 1px solid var(--color-green-1);
+}
+
+.main > section[data-nav] .section-grid .text-box {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.main > section[data-nav] .section-grid .text-box p {
+    color: var(--color-white-1);
+    font-size: 1.6rem;
+}
+
+/* ===========================================================================  footer              */
+
+.footer {
+    padding: 5rem 0 5rem 0;
+    text-align: center;
+}
+
+.footer p {
+    color: var(--color-black-1);
+    font-size: 1.2rem;
+}
+
+/* ===========================================================================  keyframes           */
+
+@keyframes rotate {
+
+    0% {
+        transform: rotate(0deg) translate(-5vh) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translate(-5vh) rotate(-360deg);
+    }
+
+}

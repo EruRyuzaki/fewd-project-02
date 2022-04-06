@@ -1,0 +1,36 @@
+/* ===========================================================================  imports             */
+
+@import url(../css/global.css);
+
+/* ===========================================================================  media-queries       */
+
+@media (min-width: 425px) {
+
+    .main > section[data-nav]:nth-of-type(even) {
+        padding: 5rem 15vw 5rem 5%;
+    }
+
+    .main > section[data-nav]:nth-of-type(odd) {
+        padding: 5rem 5% 5rem 15vw;
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    .header .nav .nav-list {
+        position: unset;
+        flex-direction: row;
+        justify-content: space-between;
+        column-gap: 1rem;
+    }
+
+    .header .nav .nav-list li .nav-item {
+        font-size: 1.2rem;
+    }
+
+    .header .nav .burger {
+        display: none;
+    }
+
+}
