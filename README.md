@@ -7,5 +7,3 @@ Languages used in this project:
 - HTML
 - CSS
 - JAVASCRIPT
-<br><br>
-Please follow this link: https://eruryuzaki.github.io/fewd-project-02/index.html
